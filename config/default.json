@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://AkshatS:bhosadika@cluster0.ijso2.mongodb.net/SocialBEE?retryWrites=true&w=majority",
+    "jwtsecret":"jwtsecret"
+}
