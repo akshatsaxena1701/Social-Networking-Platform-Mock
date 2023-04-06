@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {
-    REGISTER_SUCCESS,REGISTER_FAILED, USER_LOADED, AUTH_ERROR,LOGIN_FAILED,LOGIN_SUCCESS
+    REGISTER_SUCCESS,REGISTER_FAILED, USER_LOADED, AUTH_ERROR,LOGIN_FAILED,LOGIN_SUCCESS,LOGOUT
 } from './types'
 import {setAlert} from './action'
 import setAuthToken from '../utils/setAuthToken'
@@ -95,4 +95,11 @@ export const login=({
             type:LOGIN_FAILED
         })
     }
+}
+
+export const logout=() => dispatch =>{
+    console.log(123);
+    dispatch({
+        type:LOGOUT
+    });
 }

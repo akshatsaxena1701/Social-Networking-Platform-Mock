@@ -1,5 +1,5 @@
 import {
-    REGISTER_SUCCESS,REGISTER_FAILED,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAILED
+    REGISTER_SUCCESS,REGISTER_FAILED,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAILED,LOGOUT
 } from '../actions/types.js'
 
 const inintialState={
@@ -28,6 +28,7 @@ export default function(state=inintialState,action){
         case REGISTER_FAILED:
         case AUTH_ERROR:
         case LOGIN_FAILED:
+        case LOGOUT:
             localStorage.removeItem('token');
             return {
                 ...state,token:null,isAuthenticated:false,loading:false
