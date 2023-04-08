@@ -15,6 +15,7 @@ const Navbar = ({auth : {isAuthenticated,loading},logout}) => {
     
     const authlinks = 
     <ul>
+        <a><Link to="/profiles">Developers</Link></a>
         <a><Link to="/dashboard">DashBoard</Link></a>
         <a onClick={logout} href='#!'>Logout</a>
     </ul>

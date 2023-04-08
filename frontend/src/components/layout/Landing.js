@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
-const Landing = ({auth : {isAuthenticated}}) => {
+const Landing = ({auth : {isAuthenticated,user}}) => {
 
     if(isAuthenticated===true){
-      return <Redirect to='/dashboard'></Redirect>
+      console.log(user._id)
+      return <Redirect to={{pathname:`/profile/${user._id}`}}></Redirect>
     }
 
     return (

@@ -39,15 +39,15 @@ router.post("/",[auth,[
     if(company)
     profileuser.company=company
     if(website) 
-    profileuser.company=website
+    profileuser.website=website
     if(status)
-    profileuser.company=status
+    profileuser.status=status
     if(bio) 
-    profileuser.company=bio
+    profileuser.bio=bio
     if(location) 
-    profileuser.company=location
+    profileuser.location=location
     if(githubusername){
-        profile.user.githubusername=githubusername
+     profileuser.githubusername=githubusername
     }
     if(skills) 
     profileuser.skills=skills.split(",").map(skill=>skill.trim())
