@@ -4,7 +4,7 @@ import {
 } from './types'
 import {setAlert} from './action'
 import setAuthToken from '../utils/setAuthToken'
-
+import { BASE_URL } from './helper'
 
 //Load USer
 export const loadUser=()=>async dispatch=>{
@@ -12,7 +12,7 @@ export const loadUser=()=>async dispatch=>{
         setAuthToken(localStorage.token)
     }
     try {
-        const res=await axios.get('/api/auth')
+        const res=await axios.get(`${BASE_URL}/api/auth`)
         dispatch({
             type:USER_LOADED,
             payload:res.data
@@ -44,7 +44,7 @@ export const register=({
 
     const body=JSON.stringify({name,email,password});
     try{
-        const res=await axios.post('/api/user',body,config);
+        const res=await axios.post(`${BASE_URL}/api/user`,body,config);
         dispatch({
             type:REGISTER_SUCCESS,
             payload:res.data
@@ -78,7 +78,7 @@ export const login=({
 
     const body=JSON.stringify({email,password});
     try{
-        const res=await axios.post('/api/auth',body,config);
+        const res=await axios.post(`${BASE_URL}/api/auth`,body,config);
         dispatch({
             type:LOGIN_SUCCESS,
             payload:res.data

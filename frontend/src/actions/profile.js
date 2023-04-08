@@ -1,12 +1,12 @@
 import axios from "axios";
 import { setAlert } from "./action";
 import { PROFILE_ERROR,GET_PROFILE,GET_PROFILES,CLEAR_PROFILE } from "./types";
-
+import { BASE_URL } from "./helper";
 
 export const getCurrentProfile = ()=>async dispatch=>{
 
     try{
-        const res = await axios.get('/api/profile/me');
+        const res = await axios.get(`${BASE_URL}/api/profile/me`);
         console.log(res);
         dispatch({
             type : GET_PROFILE,
@@ -28,7 +28,7 @@ export const getProfiles = ()=>async dispatch=>{
         type:CLEAR_PROFILE
     });
     try{
-        const res = await axios.get('/api/profile');
+        const res = await axios.get(`${BASE_URL}/api/profile`);
         console.log(res);
         dispatch({
             type : GET_PROFILES,
@@ -50,7 +50,7 @@ export const getProfile = (userId)=>async dispatch=>{
         type:CLEAR_PROFILE
     });
     try{
-        const res = await axios.get(`/api/profile/user/${userId}`);
+        const res = await axios.get(`${BASE_URL}/api/profile/user/${userId}`);
         console.log(res);
         dispatch({
             type : GET_PROFILE,
@@ -96,7 +96,7 @@ export const createProfile = (formData,history,edit=false)=> async dispatch =>{
                 'Content-type' : 'application/json'
             }
         }
-        const res = await axios.post('/api/profile',JSON.stringify(formData),config)    
+        const res = await axios.post(`${BASE_URL}/api/profile`,JSON.stringify(formData),config)    
         console.log(res);
         dispatch({
                 type : GET_PROFILE,
