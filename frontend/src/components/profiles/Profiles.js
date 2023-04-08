@@ -5,15 +5,15 @@ import Spinner from '../layout/Spinner'
 import { getProfiles } from '../../actions/profile'
 import { useEffect } from 'react'
 import ProfileItem from './ProfileItem'
-const Profiles = ({getProfiles,profile:{profiles,loading}}) => {
+const Profiles = ({getProfiles,profile})=>{
   
     useEffect(()=>{
-        getProfiles();
-    },[])
+         getProfiles();
+    },[profile.loading])
   
     return (
     <Fragment>
-        {loading ? <Spinner></Spinner> : 
+        {profile.loading || profile===null? <Spinner></Spinner> : 
         
             <Fragment>
                 <h1 className='large text-primary'>Developers</h1>
@@ -22,7 +22,10 @@ const Profiles = ({getProfiles,profile:{profiles,loading}}) => {
                 </p>
 
                 <div>
-                    {profiles.length > 0 ? (profiles.map(profile=>(
+                    {/* {profile.profiles===[] ? <Spinner></Spinner> : (profile.profiles.length > 0 ? (profile.profiles.map(profile=>(
+                        <ProfileItem key={profile.id} profile={profile}></ProfileItem>
+                    ))): <h4>No profiles found.</h4>)} */}
+                    {profile.profiles.length > 0 ? (profile.profiles.map(profile=>(
                         <ProfileItem key={profile.id} profile={profile}></ProfileItem>
                     ))): <h4>No profiles found.</h4> }
                 </div>

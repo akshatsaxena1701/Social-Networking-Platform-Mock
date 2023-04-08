@@ -4,7 +4,7 @@ import axios from "axios"
 import {login} from '../../actions/auth'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-const Login = ({login,isAuthenticated}) => {
+const Login = ({login,auth:{isAuthenticated,user}}) => {
     const [formData,setFormData]=useState({
       
         email:"",
@@ -40,8 +40,9 @@ const Login = ({login,isAuthenticated}) => {
             // }
         
     }
-    if(isAuthenticated){
-      return <Redirect to="/dashboard"/>
+    if(isAuthenticated===true){
+      console.log(user._id)
+      return <Redirect to={{pathname:`/profile/${user._id}`}}></Redirect>
     }
     return <Fragment>
         <h1 className="large text-primary">Sign IN</h1>
@@ -74,11 +75,11 @@ const Login = ({login,isAuthenticated}) => {
 
 Login.propTypes={
   login:PropTypes.func.isRequired,
-  isAuthenticated:PropTypes.bool,
+  auth:PropTypes.object.isRequired,
 }
 
 const mapStateToProps=state=>({
-  isAuthenticated:state.auth.isAuthenticated
+  auth:state.auth
 })
 
 export default connect(mapStateToProps,{login})(Login)
