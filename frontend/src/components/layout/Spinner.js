@@ -4,7 +4,7 @@ const Spinner = props => {
   return (
     <img
         src={spinner}
-        style={{width:'200px',height:'200px',margin:'auto',display:'block'}}
+        style={{width:'400px',height:'300px',margin:'auto',display:'block'}}
     >
     </img>
   )
