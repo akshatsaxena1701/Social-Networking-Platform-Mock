@@ -11,7 +11,7 @@ import ProfileAbout from './ProfileAbout'
 const Profile = ({getProfile,match,profile:{profile,loading},auth}) => {
     useEffect(()=>{
         getProfile(match.params.id)
-    },[loading])
+    },[])
 
     
   return (

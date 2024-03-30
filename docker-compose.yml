@@ -1,0 +1,18 @@
+version: '3.8'
+
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3001:3001"  # Map port 3000 on host to port 3000 on container
+    image: akshatsx1701/social-network-frontend
+      
+
+  backend:
+    build: ./
+    ports:
+      - "${PORT:-4000}:${PORT:-4000}"  # Map port 5000 on host to port 5000 on container
+    image: akshatsx1701/social-network
+
+

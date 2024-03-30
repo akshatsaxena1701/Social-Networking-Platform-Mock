@@ -3,10 +3,7 @@ import {Link, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 const Landing = ({auth : {isAuthenticated,user}}) => {
 
-    if(isAuthenticated===true){
-      console.log(user._id)
-      return <Redirect to={{pathname:`/profile/${user._id}`}}></Redirect>
-    }
+
 
     return (
         <section className="landing">
@@ -19,10 +16,16 @@ const Landing = ({auth : {isAuthenticated,user}}) => {
             Create a developer profile/portfolio, share posts and get help from
             other developers
           </p>
-          <div className="buttons">
+          {isAuthenticated==true ? 
+            <div className='buttons'>
+              <Link to='/profiles'>Explore Developers</Link>
+              </div> : 
+            <div className="buttons">
             <Link to="/register" class="btn btn-primary">Sign Up</Link>
             <Link to="/login" class="btn btn-light">Login</Link>
-          </div>
+            </div>
+          }
+          
         </div>
       </div>
     </section>

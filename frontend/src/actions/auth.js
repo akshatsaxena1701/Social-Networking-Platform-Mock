@@ -79,6 +79,7 @@ export const login=({
     const body=JSON.stringify({email,password});
     try{
         const res=await axios.post(`${BASE_URL}/api/auth`,body,config);
+        dispatch(setAlert("Logged In",'danger'))
         dispatch({
             type:LOGIN_SUCCESS,
             payload:res.data
